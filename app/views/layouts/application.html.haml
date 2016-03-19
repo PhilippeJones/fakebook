@@ -8,4 +8,9 @@
 
 %body
 
+  - if notice || alert
+    #flash
+      %p.notice= notice
+      %p.alert= alert
+
   = yield
