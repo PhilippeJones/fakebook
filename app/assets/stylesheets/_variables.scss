@@ -1,5 +1,66 @@
 // Colours
 
-$white: 		#fff;
-$off-white: #f8f8ff;
-$blue:			#5060c8;
+$white: 				#fff;
+$white-near: 		#f8f8ff;
+$white-off: 		#e8e8f0;
+$white-gray:		#e0e0e8;
+$gray-light:		#c0c0d0;
+$gray:					#808090;
+$gray-mid:			#505060;
+$gray-dark:			#202028;
+$black:					#080810;
+
+$white-30:			rgba($white, 0.3);
+$white-50:			rgba($white, 0.5);
+$white-80:			rgba($white, 0.8);
+$black-30:			rgba($black, 0.3);
+$black-50:			rgba($black, 0.5);
+$black-80:			rgba($black, 0.8);
+
+$blue:					#1868e8;
+$blue-bright:		#30b0ff;
+$blue-dark:			#102088;
+$green:					#389078;
+$green-dark:		#285848;
+$yellow:				#ffd878;
+$yellow-dark:		#b09048;
+$red:						#d82848;
+$red-dark:			#882038;
+
+$primary:				$blue;
+$primary-hover:	$blue-dark;
+$primary-focus:	$blue-bright;
+$secondary:			$blue;
+
+$notice:				$green;
+$notice-text:		$white-80;
+$warning:				$yellow;
+$warning-text:	$black-80;
+$alert:					$red;
+$alert-text:		$white-80;
+
+// Styles
+
+$border-light:	$gray-light solid 1px;
+
+// Fonts
+
+$font-base:			16px;
+$font-small:		($font-base * 0.875); // 14
+$font-tiny:			($font-base * 0.75); 	// 12
+$font-large:		($font-base * 1.125); // 18
+$h1-size:				($font-base * 2);			// 32
+$h2-size:				($font-base * 1.75);	// 28
+$h3-size:				($font-base * 1.5);		// 24
+$h4-size:				($font-base * 1.25);	// 20
+$h5-size:				$font-large;					// 18
+$h6-size:				$font-base;						// 16
+$line-ht:				($font-base * 1.25);	// 20
+$line-ht-small:	($font-base * 1.125);	// 18
+$line-ht-large:	($font-base * 1.5);		// 24
+$line-ht-h1:		($font-base * 2);			// 32
+$line-ht-h2:		($font-base * 2);			// 32
+$line-ht-h3:		($font-base * 1.75);	// 28
+$line-ht-h4:		($font-base * 1.5);		// 24
+$line-ht-h5:		($font-base * 1.375);	// 22
+$line-ht-h6:		$line-ht;							// 20

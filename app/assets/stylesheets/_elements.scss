@@ -1,7 +1,52 @@
 @import 'includes';
 
+// General
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary-hover;
+  }
+
+  &:active {
+    color: $primary-hover;
+  }
+
+  &:focus {
+    color: $primary-hover;
+    background: $primary-focus;
+    outline: $primary-focus;
+    box-shadow: 0 0 5px $primary-focus;
+    border-radius: 3px;
+  }
+}
+
+
 // Posts
 
-.timestamp {
-  font-size: .75em;
+.meta {
+  font-size: $font-tiny;
+}
+
+
+// Registration
+
+#registration-links {
+  @extend %clearfix;
+  list-style: none;
+  border-top: $border-light;
+  padding: 5px 0 0;
+  margin: 10px 0 0;
+
+  li {
+    float: left;
+    border-left: $border-light;
+    padding: 2px 10px;
+
+    &:first-of-type {
+      border: none;
+    }
+  }
 }

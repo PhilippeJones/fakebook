@@ -1,11 +1,17 @@
-%h1 Home
+%h1 Firehose
 
 #posts
 	- @posts.each do |post|
-		%h2= link_to post.title, post
-		%p.timestamp
-		%p.timestamp
-			Posted
-			= time_ago_in_words(post.created_at)
-			ago
-		%p= post.content
+		.post
+			%h2= link_to post.title, post
+			.meta
+				Posted by
+				= post.user.email
+				= time_ago_in_words(post.created_at)
+				ago
+			%p= post.content
+
+#sidebar
+	%ul#users
+-#		- @users.each do |user|
+-#			%li= user.email

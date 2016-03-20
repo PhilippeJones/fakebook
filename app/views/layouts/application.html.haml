@@ -11,12 +11,13 @@
   %header#top-bar
     %nav#nav-primary
       = link_to "Fakebook", root_path, id: "logo"
-      - if user_signed_in?
-        = link_to "New Post", new_post_path, id: "new-post"
-        = link_to "Profile", edit_user_registration_path
-      - else
-        = link_to "Sign Up", new_user_registration_path
-        = link_to "Sign In", new_user_session_path
+      #nav-primary-buttons
+        - if user_signed_in?
+          = link_to "New Post", new_post_path, id: "new-post-button"
+          = link_to "Profile", edit_user_registration_path, id: "profile-button"
+        - else
+          = link_to "Sign Up", new_user_registration_path, id: "sign-up-button"
+          = link_to "Sign In", new_user_session_path, id: "sign-in-button"
 
   #main
     - if notice || alert

@@ -1,0 +1,44 @@
+@import 'includes';
+
+h1 {
+	color: $gray;
+	font-size: $h1-size;
+	line-height: $line-ht-h1;
+	font-weight: 200;
+	margin: 10px 0;
+}
+
+h2 {
+	color: $gray-mid;
+	font-size: $h2-size;
+	line-height: $line-ht-h2;
+	font-weight: 300;
+	margin: 10px 0;
+}
+
+h3 {
+	color: $gray-dark;
+	font-size: $h3-size;
+	line-height: $line-ht-h3;
+}
+
+h4 {
+	color: $gray-dark;
+	font-size: $h4-size;
+	line-height: $line-ht-h4;
+}
+
+h5 {
+	font-size: $h5-size;
+	line-height: $line-ht-h5;
+}
+
+h6 {
+	font-size: $h6-size;
+	line-height: $line-ht-h6;
+}
+
+p {
+	
+}
+
