@@ -13,17 +13,17 @@
     %nav#nav-primary
       = link_to "Fakebook", root_path, id: "logo"
       #nav-primary-buttons
-        - if user_signed_in?
+        - if current_user
           = link_to "New Post", new_post_path, id: "new-post-button"
-          = link_to "Profile", edit_user_registration_path, id: "profile-button"
+          -# = link_to "Profile", edit_user_registration_path, id: "profile-button"
+          = link_to "Sign Out", signout_path, id: "sign-out-button"
         - else
-          = link_to "Sign Up", new_user_registration_path, id: "sign-up-button"
-          = link_to "Sign In", new_user_session_path, id: "sign-in-button"
+          = link_to "Sign Up", signup_path, id: "sign-up-button"
+          = link_to "Sign In", signin_path, id: "sign-in-button"
 
   #main
     - if notice || alert
       #flash
-        %p.notice= notice
-        %p.alert= alert
-
+        - flash.each do |type, message|
+          %p.alert{class: type}= message
     = yield

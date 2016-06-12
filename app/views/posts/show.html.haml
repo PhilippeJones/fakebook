@@ -3,7 +3,7 @@
 .pane
 	.meta
 		Posted by
-		= @post.user.username
+		= @post.user.name
 		= time_ago_in_words(@post.created_at)
 		ago
 	%p= @post.content

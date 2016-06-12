@@ -9,12 +9,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'bcrypt-ruby'
 
 gem 'haml'
 
 gem 'simple_form'
 gem 'paperclip'
-gem 'devise'
 gem 'faye'
 gem 'thin'
 
