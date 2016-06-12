@@ -2,6 +2,6 @@
 	Edit
 	= @post.title
 
-= render 'form'
+= render partial: 'form', resource: @post
 
 = link_to "Cancel", post_path

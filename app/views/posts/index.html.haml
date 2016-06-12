@@ -1,17 +1,12 @@
 %h1 Firehose
 
-#posts
-	- @posts.each do |post|
-		.post
-			%h2= link_to post.title, post
-			.meta
-				Posted by
-				= post.user.email
-				= time_ago_in_words(post.created_at)
-				ago
-			%p= post.content
+#new_post_container
+	= render partial: 'form'
 
-#sidebar
+#posts
+	= render(@posts) || "There are no posts yet. Use the form above to make a post."
+
+-##sidebar
 	%ul#users
--#		- @users.each do |user|
--#			%li= user.email
+		- @users.each do |user|
+			%li= user.username
