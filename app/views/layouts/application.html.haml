@@ -5,7 +5,6 @@
   %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1'}
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
-  = csrf_meta_tags
 
 %body
 
@@ -14,6 +13,7 @@
       = link_to "Fakebook", root_path, id: "logo"
       #nav-primary-buttons
         - if current_user
+          = current_user.name
           = link_to "New Post", new_post_path, id: "new-post-button"
           -# = link_to "Profile", edit_user_registration_path, id: "profile-button"
           = link_to "Sign Out", signout_path, id: "sign-out-button"
@@ -21,9 +21,17 @@
           = link_to "Sign Up", signup_path, id: "sign-up-button"
           = link_to "Sign In", signin_path, id: "sign-in-button"
 
-  #main
-    - if notice || alert
-      #flash
-        - flash.each do |type, message|
-          %p.alert{class: type}= message
-    = yield
+  #bounds
+    #main
+      - if notice || alert
+        #flash
+          - flash.each do |type, message|
+            %p.alert{class: type}= message
+      = yield
+
+    - if @users
+      #sidebar
+        %h3 Users
+        %ul#users
+          - @users.each do |user|
+            %li= user.name

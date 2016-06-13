@@ -68,8 +68,21 @@ body {
 
 // Body
 
-#main {
+#bounds {
   @extend .container;
+  display: flex;
+}
+
+#main {
+  width: 100%;
+  max-width: 680px;
+  padding-right: 10px;
+}
+
+#sidebar {
+  width: 180px;
+  background: $gray-light;
+  padding-left: 10px;
 }
 
 .pane {

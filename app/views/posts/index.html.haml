@@ -5,8 +5,3 @@
 
 #posts
 	= render(@posts) || "There are no posts yet. Use the form above to make a post."
-
--##sidebar
-	%ul#users
-		- @users.each do |user|
-			%li= user.name
