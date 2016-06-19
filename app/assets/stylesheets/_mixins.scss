@@ -6,10 +6,35 @@
   }
 }
 
-.container {
+%container {
   box-sizing: border-box;
   max-width: 900px;
   padding: 0 10px;
   margin: 0 auto;
 }
+
+.pane {
+  @extend %clearfix;
+  max-width: 640px;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+@mixin res-image($max) {
+  width: 100%;
+  max-width: $max;
+}
+
+@mixin avatar($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+
+  &.avatar-empty {
+    display: inline-block;
+    background-color: $avatar-empty;
+  }
+}
+
 

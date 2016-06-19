@@ -3,14 +3,14 @@
 .pane
 	.meta
 		Posted by
-		= @post.user.name
+		= render partial: 'shared/user_name', locals: { user: @post.user }
 		= time_ago_in_words(@post.created_at)
 		ago
 	%p= @post.content
 
 	- if @post.user == current_user
 		= link_to "Edit", edit_post_path(@post)
-		= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}
+		= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }
 
 	%hr
 

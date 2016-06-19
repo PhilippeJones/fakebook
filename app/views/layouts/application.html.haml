@@ -10,16 +10,16 @@
 
   %header#top-bar
     %nav#nav-primary
-      = link_to "Fakebook", root_path, id: "logo"
+      = link_to "Fakebook", root_path, id: 'logo'
       #nav-primary-buttons
         - if current_user
-          = current_user.name
-          = link_to "New Post", new_post_path, id: "new-post-button"
+          = render partial: 'shared/user_name', locals: { user: current_user }
+          -# = link_to "New Post", new_post_path, id: "new-post-button"
           -# = link_to "Profile", edit_user_registration_path, id: "profile-button"
-          = link_to "Sign Out", signout_path, id: "sign-out-button"
+          = link_to "Sign Out", signout_path, id: 'sign-out-button', class: 'button'
         - else
-          = link_to "Sign Up", signup_path, id: "sign-up-button"
-          = link_to "Sign In", signin_path, id: "sign-in-button"
+          = link_to "Sign Up", signup_path, id: 'sign-up-button', class: 'button'
+          = link_to "Sign In", signin_path, id: 'sign-in-button', class: 'button'
 
   #bounds
     #main
@@ -27,6 +27,7 @@
         #flash
           - flash.each do |type, message|
             %p.alert{class: type}= message
+
       = yield
 
     - if @users
@@ -34,10 +35,11 @@
         %h3 Users
         %ul#users
           - @users.each do |user|
-            %li= user.name
+            %li= render partial: 'shared/user_name', locals: { user: user }
 
-        - if current_user
+        -# if current_user
           %h3 Profile
+          = current_user.name
           - if current_user.avatar
-            = image_tag current_user.avatar.url(:small)
+            = image_tag current_user.avatar.url(:medium), class: 'avatar-medium'
           = render 'users/avatar'

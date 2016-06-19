@@ -41,13 +41,13 @@ body {
 }
 
 #nav-primary {
-  @extend .container;
+  @extend %container;
 }
 
 #nav-primary-buttons {
   float: right;
 
-  a {
+  .button {
     box-sizing: border-box;
     display: inline-block;
     color: $primary;
@@ -69,7 +69,7 @@ body {
 // Body
 
 #bounds {
-  @extend .container;
+  @extend %container;
   display: flex;
 }
 
@@ -85,18 +85,10 @@ body {
   padding-left: 10px;
 }
 
-.pane {
-  @extend %clearfix;
-  background: $white-near;
-  border-radius: 3px;
-  padding: 10px;
-  margin-bottom: 20px;
-
-}
-
 #posts {
   .post {
     @extend .pane;
+    background: $white-near;
   }
 }
 

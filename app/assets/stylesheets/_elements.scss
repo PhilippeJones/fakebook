@@ -24,10 +24,76 @@ a {
 }
 
 
+// Flash Messages
+
+#flash {
+  @extend .pane;
+  background-color: $gray-light;
+  margin-top: 20px;
+
+  p {
+    
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// Users
+
+.user-name {
+  display: inline-block;
+  line-height: 20px;
+  height: 20px;
+  background-color: $user-tag;
+  border-radius: 10px;
+
+  img {
+    vertical-align: bottom;
+  }
+  span {
+    color: $user-tag-text;
+    padding: 0 8px 0 2px;
+  }
+}
+
+.avatar-large {
+  @include res-image(480px);
+}
+
+.avatar-medium {
+  @include avatar(160px);
+}
+
+.avatar-small {
+  @include avatar(80px);
+}
+
+.avatar-tiny {
+  @include avatar(20px);
+}
+
+
+// Images
+
+img.large {
+  @include res-image(1280px);
+}
+
+img.medium {
+  @include res-image(640px);
+}
+
+img.thumb {
+  @include res-image(120px);
+}
+
 // Posts
 
 .meta {
-  font-size: $font-tiny;
+  font-size: $font-small;
+  padding-bottom: 10px;
 }
 
 
