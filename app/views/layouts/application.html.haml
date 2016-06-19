@@ -35,3 +35,9 @@
         %ul#users
           - @users.each do |user|
             %li= user.name
+
+        - if current_user
+          %h3 Profile
+          - if current_user.avatar
+            = image_tag current_user.avatar.url(:small)
+          = render 'users/avatar'

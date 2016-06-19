@@ -14,6 +14,7 @@ gem 'bcrypt-ruby'
 gem 'haml'
 
 gem 'simple_form'
+gem 'rmagick'
 gem 'paperclip'
 gem 'faye'
 gem 'thin'

@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_filter :authorize, except: [:index, :show]
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
+	before_action :new_post, only: [:index, :new]
 
   def index
 		@posts = Post.all.order("created_at DESC")
-		@post = Post.new
 		@users = User.all
 	end
 
@@ -12,7 +12,6 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		@post = current_user.posts.build
 	end
 
 	def create
@@ -43,12 +42,17 @@ class PostsController < ApplicationController
 	end
 
 	private
+	def new_post
+		if current_user
+			@post = current_user.posts.build
+		end
+	end
 
 	def find_post
 		@post = Post.find(params[:id])
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content)
+		params.require(:post).permit(:title, :content, :image)
 	end
 end

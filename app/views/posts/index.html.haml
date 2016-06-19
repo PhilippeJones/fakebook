@@ -1,7 +1,8 @@
 %h1 Firehose
 
-#new_post_container
-	= render partial: 'form'
+- if current_user
+	#new_post_container
+		= render partial: 'form'
 
 #posts
 	= render(@posts) || "There are no posts yet. Use the form above to make a post."
