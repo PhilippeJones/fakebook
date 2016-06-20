@@ -1,0 +1,19 @@
+.post
+	%h2= link_to post.title, post
+	.meta
+		Posted by
+		= render partial: 'shared/user_name', locals: { user: post.user }
+
+		= time_ago_in_words(post.created_at)
+		ago
+
+		with
+		= pluralize(post.comments.count, "reply")
+
+		- if current_user == post.user_id
+			| 
+			= link_to "Delete", post_path(post), method: :delete
+	- if post.image.exists?
+		= image_tag post.image.url(:medium), class: 'medium'
+	- if post.content.present?
+		%p= post.content

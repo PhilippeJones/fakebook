@@ -1,0 +1,9 @@
+%h1 #{@user.name}'s Profile
+
+- if @user.avatar
+	= image_tag @user.avatar.url(:large), class: 'avatar-large'
+
+= simple_form_for current_user, url: user_path do |f|
+	= f.input :name
+	= f.input :avatar, as: :file
+	= f.submit "Save"

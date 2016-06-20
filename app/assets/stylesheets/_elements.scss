@@ -59,7 +59,7 @@ a {
 }
 
 .avatar-large {
-  @include res-image(480px);
+  @include res-image(480px, 4px);
 }
 
 .avatar-medium {
@@ -78,15 +78,15 @@ a {
 // Images
 
 img.large {
-  @include res-image(1280px);
+  @include res-image(1280px, 0);
 }
 
 img.medium {
-  @include res-image(640px);
+  @include res-image(640px, 4px);
 }
 
 img.thumb {
-  @include res-image(120px);
+  @include res-image(120px, 2px);
 }
 
 // Posts

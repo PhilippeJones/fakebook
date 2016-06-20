@@ -16,14 +16,15 @@
 .pane {
   @extend %clearfix;
   max-width: 640px;
-  border-radius: 3px;
+  border-radius: 6px;
   padding: 10px;
   margin-bottom: 20px;
 }
 
-@mixin res-image($max) {
+@mixin res-image($max, $radius) {
   width: 100%;
   max-width: $max;
+  border-radius: $radius;
 }
 
 @mixin avatar($size) {

@@ -6,6 +6,9 @@
 		= render partial: 'shared/user_name', locals: { user: @post.user }
 		= time_ago_in_words(@post.created_at)
 		ago
+
+	- if @post.image.exists?
+		= image_tag @post.image.url(:medium)
 	%p= @post.content
 
 	- if @post.user == current_user
