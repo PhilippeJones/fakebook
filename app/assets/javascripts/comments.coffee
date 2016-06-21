@@ -1,8 +1,21 @@
-$(document).ready ->
-  $("#new_comment").on("ajax:success", (e, data, status, xhr) ->
-    $("#new_comment").append xhr.responseText
-  ).on "ajax:error", (e, xhr, status, error) ->
-    $("#new_article").append "<p>ERROR</p>"
+#@Comment =
+#  
+#  init: -> @bind()
+#
+#  bind: ->
+#    $("#new_comment").on 'ajax:complete', -> @reset()
+#
+#$ ->
+#  Comment.init()
 
-  $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
-    alert "The comment was deleted."
+$(document).ready ->
+
+  $("#new_comment").on("ajax:success", (e, data, status, xhr) ->
+    $("#new_comment p").remove
+    $("#comment_comment").val ''
+  ).on "ajax:error", (e, xhr, status, error) ->
+    $("#new_comment p").remove
+    $("#new_comment").prepend "<p class=\"error\">Can't post nothing!</p>"
+
+  $("a.delete-comment[data-remote]").on "ajax:success", (e, data, status, xhr) ->
+    console.log "Comment... possibly post deleted"

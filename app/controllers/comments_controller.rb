@@ -11,10 +11,22 @@ class CommentsController < ApplicationController
 		@comment.user_id = current_user.id if current_user
 		@comment.save
 
-		if @comment.save
-			redirect_to post_path(@post)
-		else
-			render 'new', error: "Comments can't be blank."
+# Non-AJAX
+#		if @comment.save
+#			redirect_to post_path(@post)
+#		else
+#			redirect_to 'new', error: "Comments can't be blank."
+#		end
+
+		respond_to do |format|
+			if @comment.save
+				format.html { redirect_to @post, notice: 'Comment was posted successfully.' }
+				format.js
+				format.json { render json: @comment, status: :created, location: @comment }
+			else
+				format.html { render action: "new" }
+				format.json { render json: @comment.errors, status: :unprocessable_entity }
+			end
 		end
 	end
 
@@ -33,7 +45,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@comment.destroy
+		@post.comment.destroy
 		redirect_to post_path(@post)
 	end
 

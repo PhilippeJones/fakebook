@@ -7,7 +7,10 @@ Bundler.require(*Rails.groups)
 module Fakebook
   class Application < Rails::Application
     config.time_zone = 'Eastern Time (US & Canada)'
-    
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
+
     # Whitelist local IPs
     config.web_console.whitelisted_ips = '192.168.2.0'
 
