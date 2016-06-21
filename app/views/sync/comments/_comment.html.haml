@@ -1,0 +1,14 @@
+.comment
+	.meta
+		= render partial: 'shared/user_name', locals: { user: comment.user }
+		= time_ago_in_words(comment.created_at)
+		ago
+		- if comment.user == current_user
+			|
+			= link_to "Edit", edit_post_comment_path(comment.post, comment)
+			-# = link_to "Edit", edit_post_comment_path(comment.post, comment), remote: true
+			|
+			= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" }
+			-# = link_to "Delete", [comment.post, comment], class: 'delete-comment', remote: true, method: :delete
+
+	%p= comment.comment
