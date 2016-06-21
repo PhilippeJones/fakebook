@@ -18,11 +18,11 @@
 	%hr
 
 	.comments
-		%h2
-			= @post.comments.count
-			Replies
+		= sync partial: 'comments_header', resource: @post
 
-		= render @post.comments
+		- @post.comments.each do |comment|
+			= sync partial: 'comment', resource: comment
+		=sync_new partial: 'comment', resource: Comment.new, scope: @post
 
 	.add-comment
 		%h3 Reply

@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
 		@comment.save
 
 		if @comment.save
+			sync_new @comment, scope: @post
+			sync_update @post
 			redirect_to post_path(@post)
 		else
 			redirect_to 'new', error: "Comments can't be blank."
@@ -38,6 +40,8 @@ class CommentsController < ApplicationController
 
 	def update
 		if @comment.update(params[:comment].permit(:comment))
+			sync_update @comment
+			sync_update @post
 			redirect_to post_path(@post)
 		else
 			render 'edit'
@@ -52,6 +56,8 @@ class CommentsController < ApplicationController
 #			format.json { render json: @post }
 #		end
 		@comment.destroy
+		sync_destroy @comment
+		sync_update @post.reload
 		redirect_to post_path(@post)
 	end
 
