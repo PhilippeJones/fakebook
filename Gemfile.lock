@@ -143,6 +143,8 @@ GEM
     rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    render_sync (0.5.0)
+      em-http-request
     rmagick (2.15.4)
     sass (3.4.21)
     sass-rails (5.0.4)
@@ -202,6 +204,7 @@ DEPENDENCIES
   jquery-rails
   paperclip
   rails (= 4.2.0)
+  render_sync
   rmagick
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

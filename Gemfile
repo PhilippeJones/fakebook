@@ -16,8 +16,10 @@ gem 'haml'
 gem 'simple_form'
 gem 'rmagick'
 gem 'paperclip'
+
 gem 'faye'
-gem 'thin'
+gem 'thin', require: false
+gem 'render_sync'
 
 group :development, :test do
   gem 'byebug'
