@@ -14,22 +14,15 @@ class CommentsController < ApplicationController
 		if @comment.save
 			sync_new @comment, scope: @post
 			sync_update @post
-			redirect_to post_path(@post)
-		else
-			redirect_to 'new', error: "Comments can't be blank."
+#			redirect_to post_path(@post)
+#		else
+#			redirect_to 'new', error: "Comments can't be blank."
 		end
 
-# First AJAx attempt
-#		respond_to do |format|
-#			if @comment.save
-#				format.html { redirect_to @post, notice: 'Comment was posted successfully.' }
-#				format.js
-#				format.json { render json: @comment, status: :created, location: @comment }
-#			else
-#				format.html { render action: "new" }
-#				format.json { render json: @comment.errors, status: :unprocessable_entity }
-#			end
-#		end
+		respond_to do |format|
+      format.html { redirect_to post_path(@post) }
+      format.json { head :no_content }
+    end
 	end
 
 	def show
@@ -49,16 +42,15 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-#		respond_to do |format|
-#			@comment.destroy
-#			format.html { redirect_to post_path(@post), notice: 'Comment was deleted successfully.' }
-#			format.js
-#			format.json { render json: @post }
-#		end
 		@comment.destroy
 		sync_destroy @comment
 		sync_update @post.reload
-		redirect_to post_path(@post)
+#		redirect_to post_path(@post)
+
+		respond_to do |format|
+      format.html { redirect_to post_path(@post) }
+      format.json { head :no_content }
+    end
 	end
 
 	private
