@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
-  before_filter :authorize, except: [:index, :show]
+  before_filter :authorize
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
 	before_action :new_post, only: [:index, :new]
 
   def index
-		@posts = Post.all.order("created_at DESC")
-		@users = User.all
+		@posts = Post.includes(:comments).order("last_comment_at DESC")
+		sync_update @posts
 	end
 
 	def show
@@ -17,11 +17,14 @@ class PostsController < ApplicationController
 	def create
 		@post = current_user.posts.build(post_params)
 
-		if @post.save
-			redirect_to root_path
-		else
-			render 'new'
-		end
+		respond_to do |format|
+			if @post.save
+				sync_new @post
+				sync_update @posts.reload
+				format.html { redirect_to root_path }
+				format.json { head :no_content }
+			end
+    end
 	end
 
 	def edit
@@ -29,6 +32,7 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update(post_params)
+			sync_update @post
 			redirect_to @post
 		else
 			render 'edit'
@@ -36,12 +40,18 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		if @post.destroy
-			redirect_to root_path
-		end
+		@post.destroy
+		sync_destroy @post
+		sync_update @posts.reload
+
+		respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
+    end
 	end
 
 	private
+
 	def new_post
 		if current_user
 			@post = current_user.posts.build

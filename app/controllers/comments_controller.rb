@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
-	before_filter :authorize, except: [:index, :show]
+	before_filter :authorize
 	before_action :find_comment, only: [:edit, :update, :destroy]
+
+	def show
+	end
 
 	def new
 	end
@@ -14,18 +17,12 @@ class CommentsController < ApplicationController
 		if @comment.save
 			sync_new @comment, scope: @post
 			sync_update @post
-#			redirect_to post_path(@post)
-#		else
-#			redirect_to 'new', error: "Comments can't be blank."
 		end
 
 		respond_to do |format|
       format.html { redirect_to post_path(@post) }
       format.json { head :no_content }
     end
-	end
-
-	def show
 	end
 
 	def edit
@@ -45,7 +42,6 @@ class CommentsController < ApplicationController
 		@comment.destroy
 		sync_destroy @comment
 		sync_update @post.reload
-#		redirect_to post_path(@post)
 
 		respond_to do |format|
       format.html { redirect_to post_path(@post) }

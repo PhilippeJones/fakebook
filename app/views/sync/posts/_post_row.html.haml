@@ -13,7 +13,9 @@
 
 		- if post.user == current_user
 			| 
-			= link_to "Delete", post_path(post), method: :delete
+			= link_to "Edit", edit_post_path(post)
+			|
+			= link_to "Delete", post_path(post), remote: true, method: :delete
 	- if post.image.exists?
 		= image_tag post.image.url(:medium), class: 'medium'
 

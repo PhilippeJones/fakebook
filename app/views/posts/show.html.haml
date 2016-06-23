@@ -13,16 +13,15 @@
 
 	- if @post.user == current_user
 		= link_to "Edit", edit_post_path(@post)
-		= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }
+		= link_to "Delete", post_path(@post), remote: true, method: :delete, data: { confirm: "Are you sure?" }
 
 	%hr
 
 	.comments
 		= sync partial: 'comments_header', resource: @post
 
-		- @post.comments.each do |comment|
-			= sync partial: 'comment_row', resource: comment
-		=sync_new partial: 'comment_row', resource: Comment.new, scope: @post
+		= sync partial: 'comment_row', collection: @post.comments
+		= sync_new partial: 'comment_row', resource: Comment.new, scope: @post
 
 	- if current_user
 		.add-comment

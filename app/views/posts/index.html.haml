@@ -5,4 +5,5 @@
 
 %h1 All Posts
 #posts
-	= render @posts || "There are no posts yet. Use the form above to make a post."
+	= sync_new partial: 'post_row', resource: Post.new, direction: :prepend
+	= sync partial: 'post_row', collection: @posts || "There are no posts yet. Use the form above to make a post."
