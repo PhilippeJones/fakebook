@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 		respond_to do |format|
 			if @post.save
 				sync_new @post
-				sync_update @posts.reload
+				sync_update @posts
 				format.html { redirect_to root_path }
 				format.json { head :no_content }
 			end
@@ -32,8 +32,7 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update(post_params)
-			sync_update @post
-			redirect_to @post
+			redirect_to root_path
 		else
 			render 'edit'
 		end

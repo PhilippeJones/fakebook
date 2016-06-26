@@ -48,21 +48,7 @@ body {
   float: right;
 
   .button {
-    box-sizing: border-box;
-    display: inline-block;
-    color: $primary;
-    font-size: 14px;
-    line-height: 20px;
-    background: $white;
-    border: $white solid 2px;
-    border-radius: 3px;
-    padding: 3px 10px;
-    margin: 10px 0 10px 6px;
-
-    &:hover {
-      color: $white;
-      background: transparent;
-    }
+    @include button($white, $primary, transparent, $white)
   }
 }
 
@@ -85,10 +71,42 @@ body {
   padding-left: 10px;
 }
 
+#new-post-container,
+#profile-edit-container,
+#post-container,
+#edit-post-container,
+#add-comment-container,
+#edit-comment-container {
+  @include pane;
+}
+
 #posts {
   .post {
-    @extend .pane;
-    background: $white-near;
+    @include pane;
+  }
+}
+
+.comment {
+  background-color: $white-near;
+  padding: 10px;
+  margin: 0 auto;
+
+  &:nth-of-type(2n) {
+    background-color: $white;
+  }
+
+  &:first-of-type {
+    border-radius: 6px 6px 0 0;
+    margin-top: 10px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 0 6px 6px;
+    margin-bottom: 20px;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
   }
 }
 

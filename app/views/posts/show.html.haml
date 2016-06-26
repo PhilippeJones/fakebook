@@ -1,33 +1,32 @@
 %h1= @post.title
 
-.pane
+#post-container
 	.meta
 		Posted by
 		= render partial: 'shared/user_name', locals: { user: @post.user }
 		= time_ago_in_words(@post.created_at)
 		ago
+		- if @post.user == current_user
+			|
+			= link_to "Edit", edit_post_path(@post)
+			|
+			= link_to "Delete", post_path(@post), remote: true, method: :delete, data: { confirm: "Are you sure?" }
 
 	- if @post.image.exists?
 		= image_tag @post.image.url(:medium)
 	%p= @post.content
 
-	- if @post.user == current_user
-		= link_to "Edit", edit_post_path(@post)
-		= link_to "Delete", post_path(@post), remote: true, method: :delete, data: { confirm: "Are you sure?" }
+.comments
+	= sync partial: 'comments_header', resource: @post
 
-	%hr
+	-#= sync partial: 'comments_nav', resource: @post
 
-	.comments
-		= sync partial: 'comments_header', resource: @post
+	= sync partial: 'comment_row', collection: @post.comments
+	= sync_new partial: 'comment_row', resource: Comment.new, scope: @post
 
-		-#		.previous_comments= link_to_previous_page @post, 'Newer Comments'
-		-#		.next_comments= link_to_next_page @post, 'Older Comments'
-		= sync partial: 'comment_row', collection: @post.comments
-		= sync_new partial: 'comment_row', resource: Comment.new, scope: @post
-		-#		.previous_comments= link_to_previous_page @post, 'Newer Comments'
-		-#		.next_comments= link_to_next_page @post, 'Older Comments'
+	-#= sync partial: 'comments_nav', resource: @post
 
-	- if current_user
-		.add-comment
-			%h3 Reply
-			= render "comments/form"
+- if current_user
+	#add-comment-container
+		%h3 Reply
+		= render "comments/form"

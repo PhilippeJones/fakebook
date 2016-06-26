@@ -4,7 +4,7 @@ TO DO
 Necessary
 =========
 - ~~Real-time posting and commenting~~
-- Convert to Postgres
+- ~~Convert to Postgres~~
 - ~~Order by latest comment~~
 - Fix up styling
 - Paging on ~~posts~~ and comments

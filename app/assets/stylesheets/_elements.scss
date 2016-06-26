@@ -6,11 +6,7 @@ a {
   color: $primary;
   text-decoration: none;
 
-  &:hover {
-    color: $primary-hover;
-  }
-
-  &:active {
+  &:hover, &:active {
     color: $primary-hover;
   }
 
@@ -27,12 +23,20 @@ a {
 // Flash Messages
 
 #flash {
-  @extend .pane;
-  background-color: $gray-light;
-  margin-top: 20px;
+  display: block;
+  position: fixed;
+  bottom: -80px;
+  color: $white;
+  text-shadow: 0 1px 0 $black;
+  min-width: 200px;
+  width: auto;
+  max-width: $max-pane-width;
+  background-color: $black-80;
+  border-radius: 6px;
+  padding: 20px !important;
+  animation: 5s ease dropInFadeOut;
 
   p {
-    
     &:last-of-type {
       margin-bottom: 0;
     }
@@ -92,8 +96,28 @@ img.thumb {
 // Posts
 
 .meta {
+  color: $gray;
   font-size: $font-small;
   padding-bottom: 10px;
+}
+
+.post-nav {
+  @extend %clearfix;
+  padding: 10px;
+  
+  .older, .newer {
+    width: 25%;
+    
+  }
+
+  .older {
+    float: left;
+  }
+
+  .newer {
+    float: right;
+    text-align: right;
+  }
 }
 
 

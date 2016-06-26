@@ -1,0 +1,9 @@
+= simple_form_for @post do |f|
+	= f.input :title, placeholder: "Title", label: false
+	= f.input :content, placeholder: "Content...", label: false
+	
+	- if @post.image.exists?
+		= image_tag @post.image.url(:medium), class: 'thumb'
+
+	= f.input :image, as: :file
+	= f.submit "Post", data: { disable_with: "Posting..." }

@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :user
 
-  validates :comment, presence: true
+  validates :comment, presence: true, uniqueness: true
 
   after_save :update_post_last_comment_at
 
