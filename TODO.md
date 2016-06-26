@@ -6,7 +6,7 @@ Necessary
 - ~~Real-time posting and commenting~~
 - ~~Convert to Postgres~~
 - ~~Order by latest comment~~
-- Fix up styling
+- ~~Fix up styling~~
 - Paging on ~~posts~~ and comments
 
 BUGS
