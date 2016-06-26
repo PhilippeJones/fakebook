@@ -11,7 +11,8 @@ Necessary
 
 BUGS
 ====
-- Posts multiple comments
+- ~~Posts multiple comments~~
+- Posting on remote device doesn't clear and reload, but works
 
 
 Hopeful
