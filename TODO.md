@@ -7,7 +7,7 @@ Necessary
 - Convert to Postgres
 - ~~Order by latest comment~~
 - Fix up styling
-- Paging on posts and comments
+- Paging on ~~posts~~ and comments
 
 BUGS
 ====

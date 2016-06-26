@@ -1,5 +1,5 @@
 = simple_form_for(@post, remote: true) do |f|
-	= f.input :title
-	= f.input :content
+	= f.input :title, placeholder: "Title", label: false
+	= f.input :content, placeholder: "Content...", label: false
 	= f.input :image, as: :file
-	= f.submit
+	= f.submit "Post", data: { disable_with: "Posting..." }

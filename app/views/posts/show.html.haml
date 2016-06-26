@@ -20,8 +20,12 @@
 	.comments
 		= sync partial: 'comments_header', resource: @post
 
+		-#		.previous_comments= link_to_previous_page @post, 'Newer Comments'
+		-#		.next_comments= link_to_next_page @post, 'Older Comments'
 		= sync partial: 'comment_row', collection: @post.comments
 		= sync_new partial: 'comment_row', resource: Comment.new, scope: @post
+		-#		.previous_comments= link_to_previous_page @post, 'Newer Comments'
+		-#		.next_comments= link_to_next_page @post, 'Older Comments'
 
 	- if current_user
 		.add-comment

@@ -1,0 +1,14 @@
+@import 'includes';
+
+form {
+	width: 100%;
+	max-width: $max-form-width;
+	margin: 10px auto 20px;
+}
+
+input[type="text"], input[type="password"], textarea {
+	width: 100%;
+	border: 0;
+	padding: 5px;
+	margin: 0 0 2px;
+}

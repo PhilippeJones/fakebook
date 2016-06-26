@@ -5,5 +5,11 @@
 
 %h1 All Posts
 #posts
+	-#= paginate @posts, remote: true
+	.previous_page= link_to_previous_page @posts, 'Previous Page'
+	.next_page= link_to_next_page @posts, 'Next Page'
 	= sync_new partial: 'post_row', resource: Post.new, direction: :prepend
 	= sync partial: 'post_row', collection: @posts || "There are no posts yet. Use the form above to make a post."
+	.previous_page= link_to_previous_page @posts, 'Previous Page'
+	.next_page= link_to_next_page @posts, 'Next Page'
+	-#= paginate @posts, remote: true
