@@ -30,11 +30,15 @@ $ rake db:migrate
 
 ### Faye Server
 
-To support the real-time posting and syncing there's a worker running on a separate Faye server. From the project directory simply run:
+To support the real-time posting and syncing there's a worker running on a separate Faye server. Configure development and production environments to use the local IP of the server machine instead of 'localhost'.
+
+To start the From the project directory run:
 ```
-$ rackup sync.ru -E production
+$ rackup sync.ru -E production -o 0.0.0.0
 ```
 
 ## Known Issues
 
-- AJAX doesn't seem to work on remote devices
+- No error messages, or any flash messages besides welcome messages
+- Paging doesn't work on comments
+- No admin

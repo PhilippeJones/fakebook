@@ -1,6 +1,8 @@
 # Faye
 development:
+  # Replace 'localhost' with local IP
   server: "http://localhost:9292/faye"
+  # Replace 'localhost' with local IP
   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
   auth_token: "jlfdjsapiuwijklm028fjkvnxkshd7754hjglmvmbsh"
   adapter: "Faye"
@@ -27,7 +29,9 @@ test:
   async: false
 
 production:
-  server: "http://example.com/faye"
+  # Replace 'fakebook.com' with appropriate production server URL
+  server: "http://fakebook.com/faye"
+  # Replace 'localhost' with local IP
   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
   adapter: "Faye"
   auth_token: "73c08441703f03f944ae35c74c7cb8cee5a3a497b84eb61926a1641906666841"
